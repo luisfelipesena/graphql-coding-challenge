@@ -6,21 +6,39 @@ import {
   MakesResponse,
   VehicleTypesForMakeIdResponse,
 } from './vehicle.types';
-
+import fs from 'fs';
 @Injectable()
 export class VehicleService {
   private async sendVehicleTypesForMakeIdRequest(makeId: string): Promise<any> {
-    const pageResponse = await axios.get(
-      `https://vpic.nhtsa.dot.gov/api/vehicles/GetVehicleTypesForMakeId/${makeId}?format=xml`,
-    );
-    return pageResponse.data;
+    try {
+      const pageResponse = await axios.get(
+        `https://vpic.nhtsa.dot.gov/api/vehicles/GetVehicleTypesForMakeId/${makeId}?format=xml`,
+      );
+      return pageResponse.data;
+    } catch (error) {
+      console.error({ error });
+      const sampleData = fs.readFileSync(
+        '../../sample-data/getVehicleTypesForMakeId-440.xml',
+        'utf8',
+      );
+      return sampleData;
+    }
   }
 
   private async sendAllMakesRequest(): Promise<any> {
-    const pageResponse = await axios.get(
-      'https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=xml',
-    );
-    return pageResponse.data;
+    try {
+      const pageResponse = await axios.get(
+        'https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=xml',
+      );
+      return pageResponse.data;
+    } catch (error) {
+      console.error({ error });
+      const sampleData = fs.readFileSync(
+        '../../sample-data/getallmakes.xml',
+        'utf8',
+      );
+      return sampleData;
+    }
   }
 
   private async parseVehicleTypesForMakeId(
@@ -61,7 +79,9 @@ export class VehicleService {
     return { count, message, results };
   }
 
-  async getVehicleTypesForMakeId(makeId: string): Promise<any> {
+  async getVehicleTypesForMakeId(
+    makeId: string,
+  ): Promise<VehicleTypesForMakeIdResponse> {
     const vehicleTypesForMakeIdResponse =
       await this.sendVehicleTypesForMakeIdRequest(makeId);
 
