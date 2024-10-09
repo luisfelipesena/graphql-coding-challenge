@@ -8,6 +8,6 @@ export default defineConfig({
   dbCredentials: {
     url:
       process.env.DATABASE_URL ??
-      'postgres://postgres:password@localhost:5432/vehicle_db',
+      'postgres://postgres:password@localhost:5433/vehicle_db',
   },
 });
