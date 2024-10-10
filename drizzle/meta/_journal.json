@@ -1,13 +1,20 @@
 {
-  "version": "7",
-  "dialect": "postgresql",
-  "entries": [
-    {
-      "idx": 0,
-      "version": "7",
-      "when": 1728531228459,
-      "tag": "0000_amused_dragon_lord",
-      "breakpoints": true
-    }
-  ]
+	"version": "7",
+	"dialect": "postgresql",
+	"entries": [
+		{
+			"idx": 0,
+			"version": "7",
+			"when": 1728531228459,
+			"tag": "0000_amused_dragon_lord",
+			"breakpoints": true
+		},
+		{
+			"idx": 1,
+			"version": "7",
+			"when": 1728535139234,
+			"tag": "0001_demonic_adam_warlock",
+			"breakpoints": true
+		}
+	]
 }

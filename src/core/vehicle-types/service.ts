@@ -7,9 +7,18 @@ export class VehicleTypesService {
 	private readonly client: VehicleTypesClient;
 	private readonly xmlService: XmlService;
 
-	constructor() {
+	private static instance: VehicleTypesService | null = null;
+
+	private constructor() {
 		this.client = new VehicleTypesClient();
 		this.xmlService = XmlService.getInstance();
+	}
+
+	public static getInstance(): VehicleTypesService {
+		if (!VehicleTypesService.instance) {
+			VehicleTypesService.instance = new VehicleTypesService();
+		}
+		return VehicleTypesService.instance;
 	}
 
 	async getAllVehicleTypesByMakeId(
@@ -35,9 +44,11 @@ export class VehicleTypesService {
 
 	private parseVehicleTypes(data: any): VehicleType[] {
 		const results = data.Response.Results[0].VehicleTypesForMakeIds;
-		return results.map((vehicleType: any) => ({
-			id: Number.parseInt(vehicleType.VehicleTypeId[0]),
-			name: vehicleType.VehicleTypeName[0],
-		}));
+		return (
+			results?.map((vehicleType: any) => ({
+				id: Number.parseInt(vehicleType.VehicleTypeId[0]),
+				name: vehicleType.VehicleTypeName[0],
+			})) ?? []
+		);
 	}
 }

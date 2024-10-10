@@ -1,8 +1,7 @@
-import { MakesResolver } from "./makes/resolver";
-import { VehicleTypesResolver } from "./vehicle-types/resolver";
+import { OutputResolver } from "./output/resolver";
 
 export class ResolverFactory {
 	static createResolvers(): [Function, ...Function[]] {
-		return [MakesResolver, VehicleTypesResolver];
+		return [OutputResolver];
 	}
 }
