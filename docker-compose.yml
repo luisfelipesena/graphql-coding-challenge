@@ -1,23 +1,15 @@
-version: '3.8'
-
+version: '3'
 services:
-  app:
-    build: .
+  db:
+    image: postgres
     ports:
-      - "3001:3001"
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
     environment:
-      - DB_HOST=postgres
-      - DB_USER=postgres
-      - DB_PASSWORD=password
-      - DB_NAME=vehicle_db
-    depends_on:
-      - postgres
-
-  postgres:
-    image: postgres:14
-    ports:
-      - "5433:5433"
-    environment:
+      - POSTGRES_DB=graphql-challenge
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=vehicle_db
+      - POSTGRES_PASSWORD=postgres
+
+volumes:
+  pgdata:

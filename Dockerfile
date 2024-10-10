@@ -1,7 +1,14 @@
-FROM node:18
-WORKDIR /usr/src/app
-COPY package.json ./
-RUN yarn install
+FROM node:20.12.0
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+
+RUN npm install
+
 COPY . .
-RUN yarn build
-CMD [ "node", "dist/src/main.js" ]
+RUN npm run build
+
+EXPOSE 3000
+
+CMD ["npm", "run", "start:prod"]

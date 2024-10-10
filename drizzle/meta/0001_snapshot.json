@@ -1,6 +1,6 @@
 {
-	"id": "cc281688-fae9-4356-b622-5725d9745a52",
-	"prevId": "00000000-0000-0000-0000-000000000000",
+	"id": "287e8f6b-c5db-46e9-9eb0-9d8aaf7c8d83",
+	"prevId": "cc281688-fae9-4356-b622-5725d9745a52",
 	"version": "7",
 	"dialect": "postgresql",
 	"tables": {
@@ -55,7 +55,23 @@
 					"notNull": true
 				}
 			},
-			"indexes": {},
+			"indexes": {
+				"make_id_idx": {
+					"name": "make_id_idx",
+					"columns": [
+						{
+							"expression": "make_id",
+							"isExpression": false,
+							"asc": true,
+							"nulls": "last"
+						}
+					],
+					"isUnique": false,
+					"concurrently": false,
+					"method": "btree",
+					"with": {}
+				}
+			},
 			"foreignKeys": {
 				"vehicle_types_make_id_makes_id_fk": {
 					"name": "vehicle_types_make_id_makes_id_fk",
