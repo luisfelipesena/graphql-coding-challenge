@@ -1,5 +1,4 @@
 import { Arg, Query, Resolver } from "type-graphql";
-import { ApiResponse } from "../../../common/types";
 import { VehicleTypesService } from "../../../core/vehicle-types/service";
 import { VehicleType } from "../../../core/vehicle-types/types";
 

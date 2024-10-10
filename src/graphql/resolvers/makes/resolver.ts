@@ -1,5 +1,4 @@
 import { Query, Resolver } from "type-graphql";
-import { ApiResponse } from "../../../common/types";
 import { MakesService } from "../../../core/makes/service";
 import { Make } from "../../../core/makes/types";
 
