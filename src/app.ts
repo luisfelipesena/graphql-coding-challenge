@@ -1,23 +1,24 @@
-import express from "express";
+import "reflect-metadata";
+
+import { ApolloServer } from "@apollo/server";
+import { startStandaloneServer } from "@apollo/server/standalone";
 import { env } from "./config/env";
-import { wheatherRoutes } from "./routes/wheather/routes";
-import { cityRoutes } from "./routes/city/routes";
-import cors from "cors";
+import { getSchema } from "./graphql/schema";
 
-const PORT = env.PORT;
+const PORT = Number(env.PORT) || 3000;
 
-const app = express();
+async function startApolloServer() {
+	const schema = await getSchema();
 
-app.use(cors());
-app.use(express.json());
+	const server = new ApolloServer({
+		schema,
+	});
 
-app.get("/", (req, res) => {
-	res.send("Hello World!");
-});
+	const { url } = await startStandaloneServer(server, {
+		listen: { port: PORT },
+	});
 
-app.use(wheatherRoutes);
-app.use(cityRoutes);
+	console.log(`🚀  Server ready at: ${url}`);
+}
 
-app.listen(PORT, () => {
-	return console.log(`Express is listening at http://localhost:${PORT}`);
-});
+startApolloServer();

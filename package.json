@@ -4,6 +4,8 @@
 	"scripts": {
 		"start": "ts-node-dev --respawn --transpile-only src/app.ts",
 		"build": "tsc",
+		"lint:check": "biome check .",
+		"lint:fix": "biome check --apply .",
 		"start:prod": "node dist/main"
 	},
 	"keywords": [],
@@ -11,6 +13,7 @@
 	"license": "ISC",
 	"description": "",
 	"devDependencies": {
+		"@biomejs/biome": "1.9.3",
 		"@types/cors": "^2.8.17",
 		"@types/express": "^4.17.1",
 		"@types/xml2js": "^0.4.14",
@@ -19,10 +22,15 @@
 		"typescript": "^5.6.3"
 	},
 	"dependencies": {
+		"@apollo/server": "^4.11.0",
 		"axios": "^1.7.7",
 		"cors": "^2.8.5",
 		"dotenv": "^16.4.5",
 		"express": "^4.17.1",
+		"graphql": "^16.9.0",
+		"graphql-scalars": "^1.23.0",
+		"reflect-metadata": "^0.2.2",
+		"type-graphql": "^2.0.0-rc.2",
 		"xml2js": "^0.6.2"
 	}
 }

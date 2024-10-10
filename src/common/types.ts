@@ -1,6 +1,5 @@
-export type ApiResponse<T> = {
+export interface ApiResponse<T> {
+	data?: T;
 	success: boolean;
 	message: string;
-	error?: Error;
-	data?: T;
-};
+}
