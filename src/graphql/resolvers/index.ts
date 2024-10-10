@@ -1,2 +1,1 @@
-export { MakesResolver } from "./makes/resolver";
-export { VehicleTypesResolver } from "./vehicle-types/resolver";
+export { OutputResolver } from "./output/resolver";

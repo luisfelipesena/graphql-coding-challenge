@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"scripts": {
 		"start": "ts-node-dev --respawn --transpile-only src/app.ts",
-		"start:prod": "node dist/app",
+		"start:prod": "node dist/src/app",
 		"build": "tsc -p tsconfig.json",
 		"lint:check": "biome check .",
 		"lint:fix": "biome check --write .",

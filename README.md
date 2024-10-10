@@ -60,6 +60,7 @@ If you prefer to use Docker, follow these steps:
 
 2. Run the Docker container:
    ```
+   docker compose up -d
    docker run -p 3000:3000 graphql-challenge
    ```
 
