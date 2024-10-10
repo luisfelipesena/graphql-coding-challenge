@@ -4,11 +4,12 @@
 	"scripts": {
 		"start": "ts-node-dev --respawn --transpile-only src/app.ts",
 		"start:prod": "node dist/app",
-		"build": "tsc",
+		"build": "tsc -p tsconfig.json",
 		"lint:check": "biome check .",
 		"lint:fix": "biome check --apply .",
-		"generate": "drizzle-kit generate",
-		"migrate": "drizzle-kit migrate"
+		"drizzle:generate": "drizzle-kit generate",
+		"drizzle:migrate": "drizzle-kit migrate",
+		"drizzle:studio": "drizzle-kit studio"
 	},
 	"keywords": [],
 	"author": "Luis Felipe",
